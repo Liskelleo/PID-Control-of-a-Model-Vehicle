@@ -6,3 +6,5 @@ Required operating platform: 20.04.1-Ubuntu
 ROS PARAMETERS:
 `/rosdistro: noetic`
 `/rosversion: 1.16.0`
+
+click `runros` file to start directly
