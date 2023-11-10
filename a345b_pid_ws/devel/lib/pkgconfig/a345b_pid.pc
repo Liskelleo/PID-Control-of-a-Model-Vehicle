@@ -1,0 +1,8 @@
+prefix=/home/liskell/a345b_pid_ws/devel
+
+Name: a345b_pid
+Description: Description of a345b_pid
+Version: 0.0.0
+Cflags: -I/home/liskell/a345b_pid_ws/src/a345b_pid/include
+Libs: -L${prefix}/lib 
+Requires: roscpp sensor_msgs nav_msgs geometry_msgs std_msgs gazebo_msgs

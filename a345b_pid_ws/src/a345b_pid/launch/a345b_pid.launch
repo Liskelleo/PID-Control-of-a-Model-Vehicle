@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Launch the world in Gazebo. -->
+  <arg name="student_pkg_path" value="$(find a345b_pid)"/>
+  <arg name="world_name" default="$(arg student_pkg_path)/worlds/singlepillar.world"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(arg world_name)"/>
+  </include>
+  
+  <!-- Spawn Husky in Gazebo. -->
+  <include file="$(arg student_pkg_path)/launch/spawn_husky.launch">
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
+  <arg name="z" default="0"/>
+  <arg name="yaw" default="0"/>
+  <arg name="ee3305_urdf" value="$(arg student_pkg_path)/urdf/husky.urdf.xacro"/>
+  <!-- set pre-assigned mass param here-->
+  <arg name="ee3305_mass" value="450"/>
+  </include>
+<!-- launch the PID algorithm node -->
+  <node pkg="a345b_pid" type="a345b_pid" name="pid_control_node" output="screen"/>
+  
+<!-- Add the variables to tune the PID control from config.yaml -->
+  <rosparam command="load" file="$(arg student_pkg_path)/config/config.yaml"/>
+</launch>
